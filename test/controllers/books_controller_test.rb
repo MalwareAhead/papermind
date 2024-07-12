@@ -1,35 +1,37 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class BooksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @book = books(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get books_url, as: :json
     assert_response :success
   end
 
-  test "should create book" do
-    assert_difference("Book.count") do
+  test 'should create book' do
+    assert_difference('Book.count') do
       post books_url, params: { book: { isbn: @book.isbn, title: @book.title } }, as: :json
     end
 
     assert_response :created
   end
 
-  test "should show book" do
+  test 'should show book' do
     get book_url(@book), as: :json
     assert_response :success
   end
 
-  test "should update book" do
+  test 'should update book' do
     patch book_url(@book), params: { book: { isbn: @book.isbn, title: @book.title } }, as: :json
     assert_response :success
   end
 
-  test "should destroy book" do
-    assert_difference("Book.count", -1) do
+  test 'should destroy book' do
+    assert_difference('Book.count', -1) do
       delete book_url(@book), as: :json
     end
 
